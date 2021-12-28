@@ -8,7 +8,7 @@
 
 namespace Goodwix\DoctrineJsonOdm\Tests\TestCase;
 
-use Doctrine\DBAL\Driver\Connection;
+use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -57,8 +57,8 @@ class FunctionalTestCase extends KernelTestCase
 
         $connection = $this->getConnection();
         $statement  = $connection->prepare($sql);
-        $statement->execute();
-        $column = $statement->fetchColumn();
+        $result = $statement->executeQuery();
+        $column = $result->fetchOne();
 
         $cleanedJson = json_encode(json_decode($json));
         $this->assertSame($cleanedJson, $column);

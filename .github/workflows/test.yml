@@ -47,7 +47,7 @@ jobs:
 
     strategy:
       matrix:
-        symfony: ['4.4.*', '5.2.*', '5.3.*']
+        symfony: ['5.3.*', '5.4.*']
         php: ['8.0']
 
     services:
@@ -65,6 +65,7 @@ jobs:
 
       - name: Install specific symfony version
         run: composer require
+          php:^${{ matrix.php }}
           symfony/property-access:${{ matrix.symfony }}
           symfony/property-info:${{ matrix.symfony }}
           symfony/serializer:${{ matrix.symfony }}

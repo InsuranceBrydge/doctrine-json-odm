@@ -30,6 +30,10 @@ class DoctrineJsonOdmBundleTest extends TestCase
         \Phake::when($this->container)
             ->get(ODMTypeCompilerPass::ODM_AUTO_REGISTRAR)
             ->thenReturn($this->registrar);
+
+        \Phake::when($this->container)
+            ->addCompilerPass(\Phake::anyParameters())
+            ->thenReturn($this->container);
     }
 
     /** @test */
