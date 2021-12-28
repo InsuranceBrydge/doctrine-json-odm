@@ -128,6 +128,10 @@ class ODMTypeCompilerPassTest extends TestCase
             ->getDefinition(\Phake::anyParameters())
             ->thenReturn($definition);
 
+        \Phake::when($definition)
+            ->replaceArgument(\Phake::anyParameters())
+            ->thenReturn($definition);
+
         return $definition;
     }
 
