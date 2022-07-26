@@ -57,8 +57,7 @@ class FunctionalTestCase extends KernelTestCase
 
         $connection = $this->getConnection();
         $statement  = $connection->prepare($sql);
-        $result = $statement->executeQuery();
-        $column = $result->fetchOne();
+        $column = $statement->executeQuery()->fetchFirstColumn()[0];
 
         $cleanedJson = json_encode(json_decode($json));
         $this->assertSame($cleanedJson, $column);

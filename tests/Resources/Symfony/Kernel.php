@@ -33,7 +33,10 @@ class Kernel extends BaseKernel
 
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
     {
-        $container->loadFromExtension('framework', ['secret' => 's$cretf0rt3st']);
+        $container->loadFromExtension('framework', [
+            'secret' => 's$cretf0rt3st',
+            'test'   => true,
+        ]);
 
         $container->loadFromExtension('doctrine', [
             'dbal' => [
